@@ -7,8 +7,8 @@ function Attendance() {
    return (
       <>
          <BarcodeScannerComponent
-            width={500}
-            height={500}
+            width={1280}
+            height={720}
             onUpdate={(err, result) => {
                console.log(err, result)
                if (result) setData(result.text);
