@@ -2,7 +2,9 @@ package database
 
 import (
 	"Ingenius23/communication"
+	"os"
 
+	"github.com/joho/godotenv"
 	log "github.com/urishabh12/colored_log"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
@@ -10,8 +12,20 @@ import (
 
 var db *gorm.DB
 
+func goDotEnvVariable(key string) string {
+
+	// load .env file
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	return os.Getenv(key)
+}
+
 func GetDatabaseConnection() (*gorm.DB, error) {
-	dsn := "ingeniususer:pass1234@tcp(127.0.0.1:3306)/ingenius23?charset=utf8mb4&parseTime=True&loc=Local"
+	dsn := goDotEnvVariable("DB_CONN")
 	if db == nil { //If first time asking for database operations
 		var err error
 		db, err = gorm.Open(mysql.Open(dsn), &gorm.Config{})
