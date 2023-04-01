@@ -6,16 +6,27 @@ type Team struct {
 	Table_no string `json:"table_no"`
 }
 
+type Meals struct {
+	Meal_id    int  `gorm:"primaryKey;autoIncrement:true" json:"meal_id" `
+	Dinner1    bool `json:"dinner1"`
+	Midnight1  bool `json:"midnight1"`
+	Cofee1     bool `json:"coffee1"`
+	Cofee2     bool `json:"coffee2"`
+	Cofee3     bool `json:"coffee3"`
+	Breakfast1 bool `json:"breakfast1"`
+	Lunch1     bool `json:"lunch1"`
+}
+
 type User struct {
-	SRN        string `gorm:"primaryKey" json:"SRN"`
-	Name       string `json:"name"`
-	Email      string `json:"email"`
-	Phone      string `json:"phone"`
-	Team_id    string `json:"team_id"`
-	Team       Team   `gorm:"foreignKey:Team_id"`
-	Role       string `json:"usertype"`
-	Present    bool   `json:"present"`
-	Food_count int32  `json:"food_count"`
-	Max_food   int32  `json:"max_food"`
-	Checkin    bool   `json:"checkin"`
+	SRN     string `gorm:"primaryKey" json:"SRN"`
+	Name    string `json:"name"`
+	Email   string `json:"email"`
+	Phone   string `json:"phone"`
+	Team_id string `json:"team_id"`
+	Team    Team   `gorm:"foreignKey:Team_id;references:Team_id" json:"team"`
+	Role    string `json:"usertype"`
+	Present bool   `json:"present"`
+	Checkin bool   `json:"checkin"`
+	Meal_id int    `json:"meal_id"`
+	Meals   Meals  `gorm:"foreignKey:Meal_id;references:Meal_id" json:"meals"`
 }

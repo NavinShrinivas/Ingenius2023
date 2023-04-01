@@ -57,7 +57,7 @@ func GenerateAuthToken(user_record database.User) (string, int, bool, string, *c
 	claims := communication.CustomClaims{
 		user_record.SRN,
 		user_record.Name,
-		user_record.Team_id,
+		user_record.Team.Team_id,
 		user_record.Email,
 		user_record.Phone,
 		jwt.StandardClaims{
@@ -87,7 +87,10 @@ func GetClaimsInfo(rawtoken string) map[string]interface{} {
 	if token.Valid {
 		//Above if condition is redundant
 		return claims //Is a hashmap k-v pair
-	}
+	}else{
+      log.Println("Catch that fellow, trying to cheat the system it seems.")
+      return nil
+   }
 	log.Panic("Someeone is messing with memory stuff!!")
 	return nil
 }

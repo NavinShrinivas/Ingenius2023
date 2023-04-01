@@ -19,3 +19,7 @@ type CheckInRequest struct {
 	Phone string `json:"phone"`
 	Email string `json:"email"`
 }
+
+type StandardRequest struct {
+	Token string `json:"token"`
+}
