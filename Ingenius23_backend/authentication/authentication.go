@@ -5,11 +5,25 @@ import (
 	"Ingenius23/communication"
 	"Ingenius23/database"
 	"net/http"
+	"os"
 
 	"github.com/golang-jwt/jwt"
+	"github.com/joho/godotenv"
 	"github.com/skip2/go-qrcode"
 	log "github.com/urishabh12/colored_log"
 )
+
+func goDotEnvVariable(key string) string {
+
+	// load .env file
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatalf("Error loading .env file")
+	}
+
+	return os.Getenv(key)
+}
 
 func JWTAuthCheck(rawtoken string) (bool, *jwt.MapClaims) {
 	//[TODO] We can improve security by doing a database check after getting the claims
@@ -20,8 +34,9 @@ func JWTAuthCheck(rawtoken string) (bool, *jwt.MapClaims) {
 
 	//The third parameter is a callback function that Parse function executes
 	claims := jwt.MapClaims{}
+	dotenv := goDotEnvVariable("SECRET_KEY")
 	token, err := parser_struct.ParseWithClaims(string(rawtoken), claims, func(token *jwt.Token) (interface{}, error) {
-		return []byte("shoouldbekeptsecret"), nil
+		return []byte(dotenv), nil
 		//[TODO]Should move the password to a global hidden config file
 	})
 	if err != nil {
