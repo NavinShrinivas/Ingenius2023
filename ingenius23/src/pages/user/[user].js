@@ -48,7 +48,9 @@ const User = () => {
         return Object.keys(userData).map(key => {
           return (
 
-            <div key={key}>
+            <div 
+            className=''
+            key={key}>
               <input
                 type="checkbox"
                 name={key}
@@ -56,15 +58,28 @@ const User = () => {
                 checked={userData[key]}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor={key}>{key}</label>
+              <label 
+              className='mx-4 px-4'
+              htmlFor={key}>{key}</label>
             </div>
           );
         });
       };
-    return ( <div>
-       {userData &&<h1>{userName}</h1>}
+    return ( <div
+        className=' container flex h-screen flex-col items-center justify-center gap-5'
+    >
+       <div
+       className='text-4xl font-mono'
+       >
+          {userData &&<h1>{userName}</h1>}
+       </div>
+       
+        <div
+        className='flex font-mono  flex-col text-xl gap-4 '
+        >
+          {renderCheckboxes()}
+        </div>
         
-        {renderCheckboxes()}
     </div>)
     }
     export default User;
