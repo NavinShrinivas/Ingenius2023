@@ -14,7 +14,7 @@ export  const Info1 = () => {
             className=" flex items-center lg:px-40 w-full gap-10  ">
                 <Image
                 src="/code.svg"
-                alt="Picture of the author"
+                alt="something"
                 width={500}
                 height={500}
               
