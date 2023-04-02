@@ -10,7 +10,7 @@ export  const Info2 = () => {
         }, []);
     return(
         <div
-        data-aos="fade-up"
+        data-aos="zoom-in-up"
         data-aos-delay="200"
         className='items-center my-20 gap-10  lg:px-40 justify-center flex'
         >
