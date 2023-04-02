@@ -1,4 +1,4 @@
-// component to reder a svg and a heading and text next to it
+'use client';
 import Image from 'next/image';
 import { Parallax } from 'react-scroll-parallax';
 import AOS from 'aos';
