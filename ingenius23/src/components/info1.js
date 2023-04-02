@@ -1,9 +1,13 @@
+'use client';
 import Image from 'next/image';
 import { Parallax } from 'react-scroll-parallax';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-AOS.init();
+import { useEffect } from 'react';
 export  const Info1 = () => {
+    useEffect(() => {
+        AOS.init();
+        }, []);
     return(
         <div
         className='items-center justify-center flex'
@@ -14,7 +18,7 @@ export  const Info1 = () => {
             className=" flex items-center lg:px-40 w-full gap-10  ">
                 <Image
                 src="/code.svg"
-                alt="something"
+                alt="Picture of the author"
                 width={500}
                 height={500}
               

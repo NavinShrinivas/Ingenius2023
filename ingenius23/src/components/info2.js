@@ -1,10 +1,14 @@
+'use client';
 import Image from 'next/image';
-
 import { Parallax } from 'react-scroll-parallax';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-AOS.init();
+import { useEffect } from 'react';
+
 export  const Info2 = () => {
+    useEffect(() => {
+        AOS.init();
+        }, []);
     return(
         <div
         data-aos="fade-up"
