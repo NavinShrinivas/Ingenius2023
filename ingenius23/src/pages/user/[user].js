@@ -57,6 +57,7 @@ const User = () => {
                 id={key}
                 checked={userData[key]}
                 onChange={handleCheckboxChange}
+                className='w-4 h-4 accent-pink-500 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600'
               />
               <label 
               className='mx-4 px-4'
@@ -66,9 +67,12 @@ const User = () => {
         });
       };
     return ( <div
-        className=' container flex h-screen flex-col items-center justify-center gap-5'
+        className=' container flex h-screen flex-col items-center justify-center '
     >
-       <div
+      <div
+      className='boxOfchecksAndName flex flex-col items-center justify-center bg-slate-400 shadow-lg gap-5 p-16 '
+      >
+      <div
        className='text-4xl font-mono'
        >
           {userData &&<h1>{userName}</h1>}
@@ -79,6 +83,8 @@ const User = () => {
         >
           {renderCheckboxes()}
         </div>
+      </div>
+      
         
     </div>)
     }
