@@ -4,6 +4,7 @@ import { useState } from "react"
 import { Banner } from "@/components/hero";
 import { Info1 } from "@/components/info1";
 import {Info2} from "@/components/info2";
+import { Sponsor } from "@/components/sponsors";
 export default function Home() {
   const [userid, setUserid] = useState('')
   const handleChane = (e) => {
@@ -14,7 +15,7 @@ export default function Home() {
     
     <>
     <div 
-    className="   items-center  min-h-screen py-2"
+    className="  px-4  items-center  min-h-screen py-2"
     >
       <Banner />
       <div
@@ -22,10 +23,8 @@ export default function Home() {
       >
       <Info1 />
       <Info2/>
-      <Info1 />
-      <Info2/> 
-      <Info1 />
-      <Info2/>
+      <Sponsor/>
+      
         </div>
       
      

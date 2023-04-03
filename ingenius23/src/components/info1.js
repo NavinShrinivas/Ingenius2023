@@ -21,7 +21,7 @@ export  const Info1 = () => {
                 alt="Picture of the author"
                 width={500}
                 height={500}
-              
+                className='hidden lg:flex'
                 />
 
                 <div

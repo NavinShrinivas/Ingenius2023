@@ -23,7 +23,7 @@ export  const Info2 = () => {
                 </div>
 
 
-            <div className="flex items-center  w-full  ">
+            <div className="lg:flex hidden items-center  w-full  ">
                 <Image
                 src="/team.svg"
                 alt="Picture of the author"
