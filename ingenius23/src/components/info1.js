@@ -10,7 +10,7 @@ export  const Info1 = () => {
         }, []);
     return(
         <div
-        className='items-center justify-center flex'
+        className='items-center mt-10 lg:mt-0 justify-center flex'
         >
             <div  
             data-aos="fade-up"
