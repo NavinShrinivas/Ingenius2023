@@ -13,7 +13,6 @@ export  const Info1 = () => {
         className='items-center justify-center flex'
         >
             <div  
-
             data-aos="fade-up"
             data-aos-delay="200"
             className=" flex items-center lg:px-40 w-full gap-10  ">
