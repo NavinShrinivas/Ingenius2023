@@ -5,16 +5,16 @@ export  const Banner = () => {
     return (
      <>
     <div
-    className='flex min-h-screen mt-32'
+    className=' relative text-center min-h-screen '
     >
     <Parallax speed={-15}>
-      <div className="slow">
+      <div className="absolute top-0 w-full slow">
         <Image
             src="https://media.discordapp.net/attachments/972456002844766228/1091712713010462801/Main_Logo.png?width=1036&height=1036"
             alt="Picture of the author"
             width={500}
             height={500}
-            className='translate-x-full'
+            className='mx-auto'
             />
 
       </div>
@@ -22,9 +22,11 @@ export  const Banner = () => {
     <Parallax speed={15}>
 
       <div
-        className=" -translate-x-1/4 my-40 text-[#fab518] heading text-5xl font-lovelo-line-light lg:text-9xl font-bold text-center"
+        className=" text-center w-full  absolute top-72  my-40 text-[#fab518] heading text-5xl font-lovelo-line-light lg:text-9xl font-bold "
         >
-          <h1>INGENIUS 2023</h1>
+          <h1
+          className=''
+          >INGENIUS 2023</h1>
         </div>
 
     </Parallax>
