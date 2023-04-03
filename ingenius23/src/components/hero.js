@@ -5,7 +5,7 @@ export  const Banner = () => {
     return (
      <>
     <div
-    className='  relative  text-center min-h-screen '
+    className='  relative  text-center lg:min-h-screen '
     >
     <Parallax speed={-15}>
       <div className="   -z-10   w-full slow">
