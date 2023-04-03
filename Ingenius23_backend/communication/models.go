@@ -23,3 +23,9 @@ type CheckInRequest struct {
 type StandardRequest struct {
 	Token string `json:"token"`
 }
+
+type FoodPostRequest struct {
+	Token string `json:"token"`
+	Meal  string `json:"meal"`
+	//Dinner1|Midnight1|Coffee1|Coffee2|Coffee3|Breakfast1|Lunch1
+}
