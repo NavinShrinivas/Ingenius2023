@@ -15,7 +15,9 @@ export const Sponsor = () => {
                 width={200}
                 height={200}
                 className="mx-auto my-6"
-
+                 data-aos="fade-right"
+                  data-aos-delay="200"
+                  data-aos-duration="500"
                 />
                  <Image
                 src="/team.svg"
@@ -23,6 +25,9 @@ export const Sponsor = () => {
                 width={200}
                 height={200}
                 className="mx-auto my-6"
+                 data-aos="fade-right"
+                  data-aos-delay="200"
+                  data-aos-duration="500"
                 />
                  <Image
                 src="/team.svg"
@@ -30,6 +35,9 @@ export const Sponsor = () => {
                 width={200}
                 height={200}
                 className="mx-auto my-6"
+                 data-aos="fade-right"
+                  data-aos-delay="200"
+                  data-aos-duration="500"
                 />
                  <Image
                 src="/team.svg"
@@ -37,6 +45,9 @@ export const Sponsor = () => {
                 width={200}
                 height={200}
                 className="mx-auto my-6"
+                 data-aos="fade-right"
+                  data-aos-delay="200"
+                  data-aos-duration="500"
                 />
                 </div>
                 </div>
