@@ -7,6 +7,7 @@ require (
 	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/skip2/go-qrcode v0.0.0-20200617195104-da1b6568686e
 	github.com/urishabh12/colored_log v0.0.0-20220922175938-ee6e41ab33df
+	gorm.io/datatypes v1.1.1
 	gorm.io/driver/mysql v1.4.7
 	gorm.io/gorm v1.24.6
 )

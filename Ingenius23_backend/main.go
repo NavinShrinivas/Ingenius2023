@@ -13,7 +13,7 @@ import (
 )
 
 func main() {
-   database.GetDatabaseConnection()
+	database.GetDatabaseConnection()
 	log.Println("Starting backend services...")
 	r := gin.Default()
 	r.GET("/status", func(c *gin.Context) {
@@ -37,7 +37,7 @@ func main() {
 		if status {
 			qrbytes, message, httpstatus, status, err := authentication.GenerateQR(*fulluserrecord)
 			if status == false {
-            log.Println(err)
+				log.Println(err)
 				c.JSON(httpstatus, gin.H{
 					"status":  false,
 					"message": message,
@@ -79,20 +79,20 @@ func main() {
 			})
 			return
 		}
-      claims := authentication.GetClaimsInfo(b.Token)
-      if claims == nil{
-         c.JSON(http.StatusNetworkAuthenticationRequired,gin.H{
-            "status": false,
-            "message" : "Invalid qr code!"
-         })
-         return
-      }
-		message,httpstatus,status,fulluserrecord := database.GetFullUserRecord(claims)
+		claims := authentication.GetClaimsInfo(b.Token)
+		if claims == nil {
+			c.JSON(http.StatusNetworkAuthenticationRequired, gin.H{
+				"status":  false,
+				"message": "Invalid qr code!",
+			})
+			return
+		}
+		message, httpstatus, status, fulluserrecord := database.GetFullUserRecord(claims)
 		if status {
 			c.JSON(httpstatus, gin.H{
 				"status":  status,
 				"message": message,
-            "user": fulluserrecord,
+				"user":    fulluserrecord,
 			})
 		} else {
 			c.JSON(httpstatus, gin.H{
@@ -102,7 +102,7 @@ func main() {
 		}
 	})
 
-	r.POST("/attendevent", func(c *gin.Context) {
+	r.POST("/attend", func(c *gin.Context) {
 		var b communication.StandardRequest
 		err := c.BindJSON(&b)
 		if err != nil {
@@ -113,15 +113,47 @@ func main() {
 			})
 			return
 		}
-      claims := authentication.GetClaimsInfo(b.Token)
-      if claims == nil{
-         c.JSON(http.StatusNetworkAuthenticationRequired,gin.H{
-            "status": false,
-            "message" : "Invalid qr code!"
-         })
-         return
-      }
-		message,httpstatus,status:= database.SetUserAttendance(claims)
+		claims := authentication.GetClaimsInfo(b.Token)
+		if claims == nil {
+			c.JSON(http.StatusNetworkAuthenticationRequired, gin.H{
+				"status":  false,
+				"message": "Invalid qr code!",
+			})
+			return
+		}
+		message, httpstatus, status := database.SetUserAttendance(claims)
+		if status {
+			c.JSON(httpstatus, gin.H{
+				"status":  status,
+				"message": message,
+			})
+		} else {
+			c.JSON(httpstatus, gin.H{
+				"status":  status,
+				"message": message,
+			})
+		}
+	})
+	r.POST("/food", func(c *gin.Context) {
+		var b communication.FoodPostRequest
+		err := c.BindJSON(&b)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status":  false,
+				"message": "invalid request",
+			})
+			return
+		}
+		claims := authentication.GetClaimsInfo(b.Token)
+		if claims == nil {
+			c.JSON(http.StatusNetworkAuthenticationRequired, gin.H{
+				"status":  false,
+				"message": "Invalid qr code!",
+			})
+			return
+		}
+		message, httpstatus, status, _ := database.SetFoodStatus(claims,b.Meal)
 		if status {
 			c.JSON(httpstatus, gin.H{
 				"status":  status,
