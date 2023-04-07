@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"time"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	log "github.com/urishabh12/colored_log"
 )
@@ -16,6 +17,8 @@ func main() {
 	database.GetDatabaseConnection()
 	log.Println("Starting backend services...")
 	r := gin.Default()
+	r.Use(cors.Default())
+	r.Use(cors.New(cors.Config{AllowOrigins: []string{"*"}}))
 	r.GET("/status", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"status":  true,
@@ -153,7 +156,7 @@ func main() {
 			})
 			return
 		}
-		message, httpstatus, status, _ := database.SetFoodStatus(claims,b.Meal)
+		message, httpstatus, status, _ := database.SetFoodStatus(claims, b.Meal)
 		if status {
 			c.JSON(httpstatus, gin.H{
 				"status":  status,
