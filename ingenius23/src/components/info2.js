@@ -10,7 +10,7 @@ export  const Info2 = () => {
         }, []);
     return(
         <div
-        data-aos="zoom-in-up"
+        data-aos="fade-up"
         data-aos-delay="200"
         className='items-center my-20 gap-10  lg:px-40 justify-center flex'
         >
@@ -23,7 +23,7 @@ export  const Info2 = () => {
                 </div>
 
 
-            <div className="flex items-center  w-full  ">
+            <div className="lg:flex hidden items-center  w-full  ">
                 <Image
                 src="/team.svg"
                 alt="Picture of the author"

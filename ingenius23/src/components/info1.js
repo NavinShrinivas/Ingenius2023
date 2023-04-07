@@ -10,10 +10,10 @@ export  const Info1 = () => {
         }, []);
     return(
         <div
-        className='items-center justify-center flex'
+        className='items-center mt-10 lg:mt-0 justify-center flex'
         >
             <div  
-            data-aos="zoom-in-up"
+            data-aos="fade-up"
             data-aos-delay="200"
             className=" flex items-center lg:px-40 w-full gap-10  ">
                 <Image
@@ -21,7 +21,7 @@ export  const Info1 = () => {
                 alt="Picture of the author"
                 width={500}
                 height={500}
-              
+                className='hidden lg:flex'
                 />
 
                 <div
