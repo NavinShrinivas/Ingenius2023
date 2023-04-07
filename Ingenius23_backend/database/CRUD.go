@@ -4,10 +4,12 @@ import (
 	"Ingenius23/communication"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/golang-jwt/jwt"
 	"github.com/joho/godotenv"
 	log "github.com/urishabh12/colored_log"
+	"gorm.io/datatypes"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -103,8 +105,9 @@ func SetUserAttendance(req jwt.MapClaims) (string, int, bool) {
 		return "Internal Error", http.StatusInternalServerError, false
 	}
 	update_user := User{
-		SRN:     req["SRN"].(string),
-		Present: true,
+		SRN:        req["SRN"].(string),
+		Present:    true,
+		Entry_time: datatypes.Date(time.Now()),
 	}
 	result := db.Updates(&update_user)
 	if result.RowsAffected == 0 {
@@ -112,6 +115,25 @@ func SetUserAttendance(req jwt.MapClaims) (string, int, bool) {
 		//We are sure users exists cus token wont be valid if not. Unless we mess up our databse
 	} else {
 		return "Attendance recorded", http.StatusOK, true
+	}
+}
+
+func SetUserCheckout(req jwt.MapClaims) (string, int, bool) {
+	db, err := GetDatabaseConnection()
+	if err != nil {
+		return "Internal Error", http.StatusInternalServerError, false
+	}
+	update_user := User{
+		SRN:       req["SRN"].(string),
+		Checkout:  false,
+		Exit_time: datatypes.Date(time.Now()),
+	}
+	result := db.Updates(&update_user)
+	if result.RowsAffected == 0 {
+		return "User already left, invalid action!", http.StatusForbidden, false
+		//We are sure users exists cus token wont be valid if not. Unless we mess up our databse
+	} else {
+		return "Checkout Recorded!", http.StatusOK, true
 	}
 }
 

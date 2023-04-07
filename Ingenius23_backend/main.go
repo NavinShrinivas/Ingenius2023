@@ -137,6 +137,40 @@ func main() {
 			})
 		}
 	})
+
+	r.POST("/checkout", func(c *gin.Context) {
+		var b communication.StandardRequest
+		err := c.BindJSON(&b)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status":  false,
+				"message": "invalid request",
+			})
+			return
+		}
+		claims := authentication.GetClaimsInfo(b.Token)
+		if claims == nil {
+			c.JSON(http.StatusNetworkAuthenticationRequired, gin.H{
+				"status":  false,
+				"message": "Invalid qr code!",
+			})
+			return
+		}
+		message, httpstatus, status := database.SetUserCheckout(claims)
+		if status {
+			c.JSON(httpstatus, gin.H{
+				"status":  status,
+				"message": message,
+			})
+		} else {
+			c.JSON(httpstatus, gin.H{
+				"status":  status,
+				"message": message,
+			})
+		}
+	})
+
 	r.POST("/food", func(c *gin.Context) {
 		var b communication.FoodPostRequest
 		err := c.BindJSON(&b)
