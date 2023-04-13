@@ -18,10 +18,10 @@ export  const Banner = () => {
             />
             {/* a button */}
             <div className="flex flex-col items-center justify-center">
-            <button
-            className="bg-[#fab518] text-white font-bold py-2 px-4 rounded-full"
-            >
-            Register Now
+            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-[#f9af05] to-[#fab518] group-hover:from-[#f9af05] group-hover:to-to-[#fab518] hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-[#fab518] dark:focus:ring-cyan-800">
+              <span class="relative px-5 py-2.5 font-mono transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                  Register Now
+              </span>
             </button>
             </div>
 
