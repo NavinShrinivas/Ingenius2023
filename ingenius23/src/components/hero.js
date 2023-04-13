@@ -16,6 +16,14 @@ export  const Banner = () => {
             height={500}
             className=' my-28 mx-auto'
             />
+            {/* a button */}
+            <div className="flex flex-col items-center justify-center">
+            <button
+            className="bg-[#fab518] text-white font-bold py-2 px-4 rounded-full"
+            >
+            Register Now
+            </button>
+            </div>
 
       </div>
     </Parallax>
