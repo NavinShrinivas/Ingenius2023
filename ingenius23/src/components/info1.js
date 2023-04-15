@@ -27,8 +27,8 @@ export  const Info1 = () => {
                 <div
                 className=' font-mono'
                 >
-                    <h1 className='text-4xl  py-4 text-[#fab518] font-bold'>Skeletons</h1>
-                    <p className='text-xl'>Skeletons are used as a loading state while the user waits for content to load. They create a natural flow on the page while content is being loaded.</p>
+                    <h1 className='text-4xl  py-4 text-[#fab518] font-bold'>Framework</h1>
+                    <p className='text-xl'>Framework repositories contain test suites and benchmarks or in other words, barebone code structures using which, participants compete as teams to optimize the best approach and complete the code most effectively.</p>
                 </div>
 
 

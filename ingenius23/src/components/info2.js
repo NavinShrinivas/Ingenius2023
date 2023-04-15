@@ -16,10 +16,10 @@ export  const Info2 = () => {
         >
 
                 <div
-                className='  font-mono'
+                className=' font-mono'
                 >
                     <h1 className='text-4xl  py-4 text-[#fab518] font-bold'>Open Source</h1>
-                    <p className='text-xl'>Skeletons are used as a loading state while the user waits for content to load. They create a natural flow on the page while content is being loaded.</p>
+                    <p className='text-xl'>Students have access to public repositories on GitHub and will be judged on their contributions to improve open source software and thereby are encouraged to foster the spirit of FOSS which allows one to use and modify software collaboratively.</p>
                 </div>
 
 

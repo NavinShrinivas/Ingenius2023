@@ -10,14 +10,14 @@ export const Sponsor = () => {
             <div className="  px-10 my-10  ">
                 <div className=" grid grid-cols-1  lg:grid-cols-4  ">
                 <Image
-                src="/team.svg"
+                src="https://media.discordapp.net/attachments/972456002844766228/1095888869720858664/wolfram-language-text-logo.png?width=1420&height=502"
                 alt="Picture of the author"
                 width={200}
                 height={200}
                 className="mx-auto my-6"
                  data-aos="fade-right"
                   data-aos-delay="200"
-                  data-aos-duration="500"
+                  data-aos-duration="600"
                 />
                  <Image
                 src="/team.svg"
@@ -27,7 +27,7 @@ export const Sponsor = () => {
                 className="mx-auto my-6"
                  data-aos="fade-right"
                   data-aos-delay="200"
-                  data-aos-duration="500"
+                  data-aos-duration="600"
                 />
                  <Image
                 src="/team.svg"
@@ -37,7 +37,7 @@ export const Sponsor = () => {
                 className="mx-auto my-6"
                  data-aos="fade-right"
                   data-aos-delay="200"
-                  data-aos-duration="500"
+                  data-aos-duration="600"
                 />
                  <Image
                 src="/team.svg"
@@ -47,7 +47,7 @@ export const Sponsor = () => {
                 className="mx-auto my-6"
                  data-aos="fade-right"
                   data-aos-delay="200"
-                  data-aos-duration="500"
+                  data-aos-duration="600"
                 />
                 </div>
                 </div>
