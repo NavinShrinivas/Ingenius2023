@@ -16,6 +16,7 @@ export default function Home() {
     <>
       <Head>
         <title>Ingenius 2023</title>
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <div className="  px-4  items-center  min-h-screen py-2">
         <Banner />
