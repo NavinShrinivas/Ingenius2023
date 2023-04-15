@@ -16,6 +16,7 @@ export default function Home() {
     <>
       <Head>
         <title>Ingenius 2023</title>
+        <link rel="shortcut icon" href="/favicon.png" />
       </Head>
       <div className="  px-4  items-center  min-h-screen py-2">
         <Banner />
@@ -25,6 +26,20 @@ export default function Home() {
           <Info3 />
           <Sponsor />
         </div>
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-Y9ZP6CZW1R"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [] ; function gtag()
+            {dataLayer.push(arguments)}
+            gtag('js', new Date()); gtag('config', 'G-Y9ZP6CZW1R');
+      `,
+          }}
+        ></script>
       </div>
 
       {/* <div 
