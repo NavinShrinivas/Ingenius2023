@@ -6,6 +6,7 @@ import { Info2 } from "@/components/info2";
 import { Sponsor } from "@/components/sponsors";
 import { Info3 } from "@/components/info3";
 import Head from "next/head";
+import Script from "next/script";
 export default function Home() {
   const [userid, setUserid] = useState("");
   const handleChane = (e) => {
@@ -26,15 +27,19 @@ export default function Home() {
           <Sponsor />
         </div>
 
-        <script
+        <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-Y9ZP6CZW1R"
-        ></script>
-        <script>
-          window.dataLayer = window.dataLayer || []; function gtag()
-          {dataLayer.push(arguments)}
-          gtag('js', new Date()); gtag('config', 'G-Y9ZP6CZW1R');
-        </script>
+        ></Script>
+        <Script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [] ; function gtag()
+            {dataLayer.push(arguments)}
+            gtag('js', new Date()); gtag('config', 'G-Y9ZP6CZW1R');
+      `,
+          }}
+        ></Script>
       </div>
 
       {/* <div 
