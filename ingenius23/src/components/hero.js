@@ -17,12 +17,10 @@ export const Banner = () => {
             />
             {/* a button */}
             <div className="flex flex-col items-center justify-center">
-              <button class="relative inline-flex items-center justify-center p-1 mb-2 mr-2 bg-white overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-[#f9af05] to-[#fab518] group-hover:from-[#f9af05] group-hover:to-to-[#fab518] hover:text-white dark:text-white focus:ring-2 focus:outline-none focus:ring-[#fab518] dark:focus:ring-cyan-800">
-                <span class="relative px-5 py-2.5 font-mono transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                  <Link href="https://fadze26msn0.typeform.com/to/eFY5Atro">
-                    Register Now
-                  </Link>
-                </span>
+              <button class="relative text-lg inline-flex items-center justify-center px-7 py-4 mb-2 mr-2 bg-white overflow-hidden font-medium text-gray-900 border-solid border-4 border-[#fab518] rounded-xl hover:bg-[#fab518] hover:text-white hover:text-bold hover:scale-110 transition duration-300 ease-in-out transform hover:-translate-y-1">
+                <Link href="https://fadze26msn0.typeform.com/to/eFY5Atro">
+                  Register Now
+                </Link>
               </button>
             </div>
           </div>
