@@ -14,7 +14,7 @@ export const Info2 = () => {
       className="items-center my-20 gap-10  lg:px-40 justify-center flex"
     >
       <div className=" font-mono">
-        <h1 className="text-4xl  py-4 text-[#fab518] font-bold">Open Source</h1>
+        <h1 className="text-4xl  py-4 text-[#216cb5] font-bold">FOSS</h1>
         <p className="text-xl">
           Students have access to public repositories on GitHub and will be
           judged on their contributions to improve open source software and
@@ -25,7 +25,7 @@ export const Info2 = () => {
 
       <div className="lg:flex hidden items-center  w-full  ">
         <Image
-          src="/team.svg"
+          src="/FOSS.png"
           alt="Picture of the author"
           width={500}
           height={500}

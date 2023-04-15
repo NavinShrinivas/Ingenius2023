@@ -16,7 +16,7 @@ export const Info3 = () => {
         className=" flex items-center lg:px-40 w-full gap-10  "
       >
         <Image
-          src="/open.svg"
+          src="/Open_innovation.png"
           alt="Picture of the author"
           width={500}
           height={500}
@@ -24,7 +24,7 @@ export const Info3 = () => {
         />
 
         <div className=" font-mono">
-          <h1 className="text-4xl  py-4 text-[#fab518] font-bold">
+          <h1 className="text-4xl  py-4 text-[#216cb5] font-bold">
             Open Innovation
           </h1>
           <p className="text-xl">
