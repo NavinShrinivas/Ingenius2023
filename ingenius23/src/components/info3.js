@@ -16,7 +16,7 @@ export const Info3 = () => {
         className=" flex items-center lg:px-40 w-full gap-10  "
       >
         <Image
-          src="/Open_innovation.png"
+          src="/Open_innovation_1.png"
           alt="Picture of the author"
           width={500}
           height={500}
