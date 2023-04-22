@@ -19,16 +19,17 @@ export const Sponsor = () => {
               data-aos-delay="200"
               data-aos-duration="600"
             />
-            {/* <Image
-                src="/team.svg"
-                alt="Picture of the author"
-                width={200}
-                height={200}
-                className="mx-auto my-6"
-                 data-aos="fade-right"
-                  data-aos-delay="200"
-                  data-aos-duration="600"
-                />
+            <Image
+              src="/JuliaHub-Logo-color-black.svg"
+              alt="Picture of the author"
+              width={200}
+              height={200}
+              className="mx-auto my-6"
+              data-aos="fade-right"
+              data-aos-delay="200"
+              data-aos-duration="600"
+            />
+            {/* 
                  <Image
                 src="/team.svg"
                 alt="Picture of the author"
