@@ -4,7 +4,7 @@ import { Parallax } from "react-scroll-parallax";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
-export const Info1 = () => {
+export const Info3 = () => {
   useEffect(() => {
     AOS.init();
   }, []);
@@ -16,7 +16,7 @@ export const Info1 = () => {
         className=" flex items-center lg:px-40 w-full gap-10  "
       >
         <Image
-          src="/Framework.png"
+          src="/Open_innovation_1.png"
           alt="Picture of the author"
           width={500}
           height={500}
@@ -24,12 +24,15 @@ export const Info1 = () => {
         />
 
         <div className=" font-mono">
-          <h1 className="text-4xl  py-4 text-[#216cb5] font-bold">Framework</h1>
+          <h1 className="text-4xl  py-4 text-[#216cb5] font-bold">
+            Open Innovation
+          </h1>
           <p className="text-xl">
-            Framework repositories contain test suites and benchmarks or in
-            other words, barebone code structures using which, participants
-            compete as teams to optimize the best approach and complete the code
-            most effectively.
+            Open innovation provides opportunities that you never knew existed.
+            Opportunities to explore, learn and grow. With the liberty of
+            choice, you can work on any problem statement. InGenius aims to
+            kindle that fire of innovation within you. Let your thoughts run
+            wild. Ideas stay unbounded. The sky is the limit.
           </p>
         </div>
       </div>
