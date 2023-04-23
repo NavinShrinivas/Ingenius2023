@@ -9,7 +9,6 @@ import (
 	"github.com/golang-jwt/jwt"
 	"github.com/joho/godotenv"
 	log "github.com/urishabh12/colored_log"
-	"gorm.io/datatypes"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
@@ -107,7 +106,7 @@ func SetUserAttendance(req jwt.MapClaims) (string, int, bool) {
 	update_user := User{
 		SRN:        req["SRN"].(string),
 		Present:    true,
-		Entry_time: datatypes.Date(time.Now()),
+		Entry_time: time.Now(),
 	}
 	result := db.Updates(&update_user)
 	if result.RowsAffected == 0 {
@@ -126,7 +125,7 @@ func SetUserCheckout(req jwt.MapClaims) (string, int, bool) {
 	update_user := User{
 		SRN:       req["SRN"].(string),
 		Checkout:  false,
-		Exit_time: datatypes.Date(time.Now()),
+		Exit_time: time.Now(),
 	}
 	result := db.Updates(&update_user)
 	if result.RowsAffected == 0 {

@@ -1,6 +1,9 @@
 package database
 
-import "gorm.io/datatypes"
+import (
+	"time"
+
+)
 
 // -----Databse Models-----
 type Team struct {
@@ -28,10 +31,10 @@ type User struct {
 	Team       Team           `gorm:"foreignKey:Team_id;references:Team_id" json:"team"`
 	Role       string         `json:"usertype"`
 	Present    bool           `json:"present"`
-	Entry_time datatypes.Date `json:"entry_time"`
+	Entry_time time.Time      `json:"entry_time"`
 	Checkin    bool           `json:"checkin"`
 	Checkout   bool           `json:"checkout"`
 	Meal_id    int            `json:"meal_id"`
 	Meals      Meals          `gorm:"foreignKey:Meal_id;references:Meal_id" json:"meals"`
-	Exit_time  datatypes.Date `json:"exit_time"`
+	Exit_time  time.Time `json:"exit_time"`
 }

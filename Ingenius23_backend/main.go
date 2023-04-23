@@ -14,7 +14,7 @@ import (
 )
 
 func main() {
-	database.GetDatabaseConnection()
+	database.GetDatabaseConnection() //Migrations
 	log.Println("Starting backend services...")
 	r := gin.Default()
 	r.Use(cors.Default())
