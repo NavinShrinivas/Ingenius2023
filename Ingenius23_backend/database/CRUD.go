@@ -44,6 +44,46 @@ func GetDatabaseConnection() (*gorm.DB, error) {
 	return db, nil
 }
 
+func CreateUserRecord(b communication.UserInitRequest) (string, int, bool) {
+	db, err := GetDatabaseConnection()
+	if err != nil {
+		log.Println(err)
+		return "Internal error", http.StatusInternalServerError, false
+	}
+	query_meal := Meals{Dinner1: false, Midnight1: false, Breakfast1: false, Lunch1: false, Coffee1: false, Coffee2: false, Coffee3: false}
+	result := db.Create(&query_meal)
+	if result.Error != nil {
+		log.Println(err)
+
+		return "Internal error", http.StatusInternalServerError, false
+	}
+	query_user := User{
+		Name:    b.Name,
+		SRN:     b.SRN,
+		Email:   b.Email,
+		Phone:   b.Phone,
+		Team_id: b.Team_id,
+		Team: Team{
+			Team_id: b.Team_id,
+         //Needs to fill table number also
+		},
+		Role:     "participant",
+		Present:  false,
+		Checkin:  false,
+		Checkout: false,
+      Meal_id : query_meal.Meal_id,
+		Meals:    query_meal,
+	}
+	result = db.Create(&query_user)
+	if result.Error != nil {
+		log.Println(err)
+
+		return "Internal error", http.StatusInternalServerError, false
+	}
+
+	return "User created", http.StatusOK, true
+}
+
 func CheckUserRecords(request communication.CheckInRequest) (bool, *User) {
 	db, err := GetDatabaseConnection()
 	if err != nil {

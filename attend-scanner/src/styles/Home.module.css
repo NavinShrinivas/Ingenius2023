@@ -5,6 +5,17 @@
    align-items: center;
    padding: 3rem;
    min-height: 100vh;
+   gap: 65px;
+}
+
+.main2 {
+   display: flex;
+   flex-direction: column;
+   /* justify-content: space-between; */
+   align-items: center;
+   padding: 3rem;
+   min-height: 100vh;
+   gap: 65px;
 }
 
 .description {

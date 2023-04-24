@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import BarcodeScannerComponent from "@steima/react-qr-barcode-scanner";
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import styles from "@/styles/Home.module.css";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
+import styles from "@/styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 const API_URL = "http://localhost:5001";
@@ -150,10 +150,10 @@ export default function Home() {
                </form>
             </div>
             {attempt ? (
-               <div class="h-100 d-flex align-items-center justify-content-center " >
+               <div class="d-flex align-items-center justify-content-center flex-column" >
                   <p>{data}</p>
-                  {qr ? <div class="h-100 d-flex align-items-center justify-content-center ">
-                     <p>Click on the qr code to download it as an image</p> <br/>
+                  {qr ? <div class="d-flex align-items-center justify-content-center flex-column">
+                     <p>Click on the qr code to download it as an image</p> <br />
                      <a href={"data:image/png;base64," + qrscan} download="myimage">
                         <Image
                            id="imgElem"

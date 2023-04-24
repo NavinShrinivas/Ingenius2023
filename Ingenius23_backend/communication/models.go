@@ -29,3 +29,11 @@ type FoodPostRequest struct {
 	Meal  string `json:"meal"`
 	//Dinner1|Midnight1|Coffee1|Coffee2|Coffee3|Breakfast1|Lunch1
 }
+
+type UserInitRequest struct {
+	SRN     string `gorm:"primaryKey" json:"SRN"`
+	Name    string `json:"name"`
+	Email   string `json:"email"`
+	Phone   string `json:"phone"`
+	Team_id string `json:"team_id"`
+}

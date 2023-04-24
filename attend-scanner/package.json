@@ -14,10 +14,10 @@
     "bootstrap": "^5.2.3",
     "bootstrap-next": "^1.0.5",
     "eslint": "8.37.0",
-    "eslint-config-next": "13.2.4",
-    "next": "13.2.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
+    "eslint-config-next": "^13.3.1",
+    "next": "^13.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-qr-barcode-scanner": "^1.0.6"
   }
 }

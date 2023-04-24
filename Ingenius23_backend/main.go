@@ -71,7 +71,32 @@ func main() {
 		}
 	})
 
-	r.GET("/info", func(c *gin.Context) {
+	r.POST("/createuser", func(c *gin.Context) {
+		var b communication.UserInitRequest
+		err := c.BindJSON(&b)
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status":  false,
+				"message": "invalid request",
+			})
+			return
+		}
+		message, httpstatus, status:= database.CreateUserRecord(b)
+		if status {
+			c.JSON(httpstatus, gin.H{
+				"status":  status,
+				"message": message,
+			})
+		} else {
+			c.JSON(httpstatus, gin.H{
+				"status":  status,
+				"message": message,
+			})
+		}
+	})
+
+	r.POST("/info", func(c *gin.Context) {
 		var b communication.StandardRequest
 		err := c.BindJSON(&b)
 		if err != nil {
