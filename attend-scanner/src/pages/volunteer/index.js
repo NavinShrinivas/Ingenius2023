@@ -20,7 +20,7 @@ export default function Home() {
    const dismissQrReader = () => {
       // Stop the QR Reader stream (fixes issue where the browser freezes when closing the modal) and then dismiss the modal one tick later
       setStopStream(true);
-      if (stopStream == true){
+      if (stopStream == true) {
          window.location.reload();
       }
    };
@@ -51,14 +51,14 @@ export default function Home() {
                            )
                            .then((resp) => {
                               // console.log(resp)
-                              if(resp.data.status == true){
+                              if (resp.data.status == true) {
                                  setData1(resp.data.user);
-                              }else{
+                              } else {
                                  setDetails(true)
                                  alert("Invalid QR code!")
                                  setStopStream(false);
                               }
-                           }).catch((err) =>{
+                           }).catch((err) => {
                               console.log(err)
                               alert("Something is wrong with backend, contact Navin ASAP!")
                               setStopStream(false);
@@ -76,32 +76,56 @@ export default function Home() {
                      <h5>SRN : {data1.SRN}</h5>
                      <h5>Team : {data1.team.team_id}</h5>
                      <h5>Table : {data1.team.table_no}</h5>
-                     <h5>Present : {data1.present?("yes"):"no"}</h5>
-                     {data1.present?(<h4>Entry time : {data1.entry_time.slice(11,-10)} {data1.entry_time.slice(0,10)}</h4>):null}
+                     <h5>Present : {data1.present ? ("yes") : "no"}</h5>
+                     {data1.present ? (<h5>Entry time : {data1.entry_time.slice(11, -10)} {data1.entry_time.slice(0, 10)}</h5>) : null}
 
-                     <h4>Check-out : {data1.checkout?("yes"):"no"}</h4>
-                     {data1.checkout?(<h4>Exit time : {data1.exit_time.slice(11,-10)} {data1.exit_time.slice(0,10)}</h4>):null}
+                     <h5>Check-out : {data1.checkout ? ("yes") : "no"}</h5>
+                     {data1.checkout ? (<h5>Exit time : {data1.exit_time.slice(11, -10)} {data1.exit_time.slice(0, 10)}</h5>) : null}
                      <div>
                         {/* <label>Coffee1</label><input type="checkbox" checked={data1.meals.coffee1}></input> */}
-                        <button disabled={data1.meals.coffee1} className="btn btn-primary ">
-                           Coffee1
-                        </button>
-                        <br />
-                        <button disabled={data1.meals.coffee2} className="btn btn-primary "type="button">
-                           Coffee2
-                        </button>
-                        <br />
-                        <button disabled={data1.meals.coffee3} className="btn btn-primary "type="button">
-                           Coffee3
-                        </button>
-                        <br />
+                        <div class="container">
+                           <div class="row">
+                              <div class="col p-3">
+                                 <button disabled={data1.present} className="btn btn-primary ">
+                                    {!data1.present?("Present"):(<p>{data1.entry_time.slice(11, -10)} [{data1.entry_time.slice(0, 10)}]</p>)}
+                                 </button>
+                              </div>
+                              <div class="col p-3">
+                                 <button disabled={data1.checkout} className="btn btn-primary ">
+                                    {!data1.checkout?("Checkout"):(<p>Exit time : <br/> {data1.exit_time.slice(11, -10)} {data1.exit_time.slice(0, 10)}</p>)}
+                                 </button>
+                              </div>
+                              <div class="col p-3">
+                                 <button disabled={data1.meals.coffee3} className="btn btn-primary " type="button">
+                                    Coffee3
+                                 </button>
+                              </div>
+                           </div>
+                           <div class="row">
+                              <div class="col p-3">
+                                 <button disabled={data1.meals.coffee1} className="btn btn-primary ">
+                                    Coffee1
+                                 </button>
+                              </div>
+                              <div class="col p-3">
+                                 <button disabled={data1.meals.coffee2} className="btn btn-primary " type="button">
+                                    Coffee2
+                                 </button>
+                              </div>
+                              <div class="col p-3">
+                                 <button disabled={data1.meals.coffee3} className="btn btn-primary " type="button">
+                                    Coffee3
+                                 </button>
+                              </div>
+                           </div>
+                        </div>
                      </div>
                   </center>
                </div>
             ) : null}
             {/* {console.log(data1.meals)} */}
 
-            <button onClick={dismissQrReader}className="btn btn-primary ">Toggle Scanner</button>
+            <button onClick={dismissQrReader} className="btn btn-primary ">Toggle Scanner</button>
          </main>
       </>
    );

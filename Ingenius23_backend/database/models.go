@@ -6,8 +6,8 @@ import (
 
 // -----Databse Models-----
 type Team struct {
-	Team_id  string `gorm:"primaryKey" json:"team_id"`
-	Table_no int    `json:"table_no"`
+	Team_id  string `json:"team_id"`
+   Table_no int    `gorm:"primaryKey;autoIncrement:true" json:"table_no"`
 }
 
 type Meals struct {

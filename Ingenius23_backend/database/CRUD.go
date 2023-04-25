@@ -57,21 +57,34 @@ func CreateUserRecord(b communication.UserInitRequest) (string, int, bool) {
 
 		return "Internal error", http.StatusInternalServerError, false
 	}
+   //Check is team existing : '
+
+	team := Team{Team_id: b.Team_id}
+   existing_team := Team{}
+   db.First(&existing_team,&team)
+   if existing_team.Team_id != team.Team_id{
+      result = db.Create(&team)
+      if result.Error != nil {
+         log.Println(err)
+
+         return "Internal error", http.StatusInternalServerError, false
+      }
+   }else{
+      team.Table_no = existing_team.Table_no
+   }
+   
 	query_user := User{
-		Name:    b.Name,
-		SRN:     b.SRN,
-		Email:   b.Email,
-		Phone:   b.Phone,
-		Team_id: b.Team_id,
-		Team: Team{
-			Team_id: b.Team_id,
-         //Needs to fill table number also
-		},
+		Name:     b.Name,
+		SRN:      b.SRN,
+		Email:    b.Email,
+		Phone:    b.Phone,
+		Team_id:  b.Team_id,
+		Team:     team,
 		Role:     "participant",
 		Present:  false,
 		Checkin:  false,
 		Checkout: false,
-      Meal_id : query_meal.Meal_id,
+		Meal_id:  query_meal.Meal_id,
 		Meals:    query_meal,
 	}
 	result = db.Create(&query_user)
