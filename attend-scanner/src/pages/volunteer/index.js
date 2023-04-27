@@ -106,6 +106,46 @@ export default function Home() {
             alert("Something is wrong with backend, contact Navin ASAP!")
          });
    }
+   const handleFood = (e) => {
+      axios
+         .post(
+            `${API_URL}/food`,
+            { Token: window.$qr.text, meal: e.target.id },
+            { headers: { Accept: "application/json" } }
+         )
+         .then((resp) => {
+            // console.log(resp)
+            if (resp.data.status == true) {
+               alert("Food attendance recorded!")
+               axios
+                  .post(
+                     `${API_URL}/info`,
+                     { Token: window.$qr.text },
+                     { headers: { Accept: "application/json" } }
+                  )
+                  .then((resp) => {
+                     // console.log(resp)
+                     if (resp.data.status == true) {
+                        setData1(resp.data.user);
+                     } else {
+                        setDetails(true)
+                        alert("Invalid QR code!")
+                        setStopStream(false);
+                     }
+                  }).catch((err) => {
+                     console.log(err)
+                     alert("Something is wrong with backend, contact Navin ASAP!")
+                     setStopStream(false);
+                  });
+
+            } else {
+               alert("Something went wrong, call the backend guys!")
+            }
+         }).catch((err) => {
+            console.log(err)
+            alert("Something is wrong with backend, contact Navin ASAP!")
+         });
+   }
 
    return (
       <>
@@ -178,25 +218,25 @@ export default function Home() {
                                  </button>
                               </div>
                               <div class="col p-3">
-                                 <button disabled={data1.meals.coffee3} className="btn btn-primary " type="button">
-                                    Coffee3
+                                 <button id="Dinner1" disabled={data1.meals.dinner1} className="btn btn-primary " type="button" onClick={handleFood}>
+                                    Dinner
                                  </button>
                               </div>
                            </div>
                            <div class="row">
                               <div class="col p-3">
-                                 <button disabled={data1.meals.coffee1} className="btn btn-primary ">
-                                    Coffee1
+                                 <button id="Midnight1" disabled={data1.meals.midnight1} className="btn btn-primary " onClick={handleFood}>
+                                    Minight Smaks
                                  </button>
                               </div>
                               <div class="col p-3">
-                                 <button disabled={data1.meals.coffee2} className="btn btn-primary " type="button">
-                                    Coffee2
+                                 <button id="Breakfast1" disabled={data1.meals.breakfast1} className="btn btn-primary " type="button" onClick={handleFood}>
+                                    Breakfast
                                  </button>
                               </div>
                               <div class="col p-3">
-                                 <button disabled={data1.meals.coffee3} className="btn btn-primary " type="button">
-                                    Coffee3
+                                 <button id="Lunch1" disabled={data1.meals.lunch1} className="btn btn-primary " type="button" onClick={handleFood}>
+                                    Lunch
                                  </button>
                               </div>
                            </div>
