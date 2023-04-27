@@ -29,7 +29,7 @@ export default function Home() {
       axios
          .post(
             `${API_URL}/attend`,
-            { Token: result2.text },
+            { Token: window.$qr.text },
             { headers: { Accept: "application/json" } }
          )
          .then((resp) => {
@@ -39,7 +39,7 @@ export default function Home() {
                axios
                   .post(
                      `${API_URL}/info`,
-                     { Token: result2.text },
+                     { Token: window.$qr.text },
                      { headers: { Accept: "application/json" } }
                   )
                   .then((resp) => {
