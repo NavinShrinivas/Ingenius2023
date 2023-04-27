@@ -57,22 +57,22 @@ func CreateUserRecord(b communication.UserInitRequest) (string, int, bool) {
 
 		return "Internal error", http.StatusInternalServerError, false
 	}
-   //Check is team existing : '
+	//Check is team existing : '
 
 	team := Team{Team_id: b.Team_id}
-   existing_team := Team{}
-   db.First(&existing_team,&team)
-   if existing_team.Team_id != team.Team_id{
-      result = db.Create(&team)
-      if result.Error != nil {
-         log.Println(err)
+	existing_team := Team{}
+	db.First(&existing_team, &team)
+	if existing_team.Team_id != team.Team_id {
+		result = db.Create(&team)
+		if result.Error != nil {
+			log.Println(err)
 
-         return "Internal error", http.StatusInternalServerError, false
-      }
-   }else{
-      team.Table_no = existing_team.Table_no
-   }
-   
+			return "Internal error", http.StatusInternalServerError, false
+		}
+	} else {
+		team.Table_no = existing_team.Table_no
+	}
+
 	query_user := User{
 		Name:     b.Name,
 		SRN:      b.SRN,
@@ -177,7 +177,7 @@ func SetUserCheckout(req jwt.MapClaims) (string, int, bool) {
 	}
 	update_user := User{
 		SRN:       req["SRN"].(string),
-		Checkout:  false,
+		Checkout:  true,
 		Exit_time: time.Now(),
 	}
 	result := db.Updates(&update_user)

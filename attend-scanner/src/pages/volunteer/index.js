@@ -8,7 +8,8 @@ import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
 
 const inter = Inter({ subsets: ["latin"] });
-const API_URL = "http://localhost:5001";
+const API_URL = "https://hackframe.navinshrinivas.com";
+var qr;
 
 export default function Home() {
    const [data, setData] = React.useState("Not Found");
@@ -24,7 +25,87 @@ export default function Home() {
          window.location.reload();
       }
    };
+   const presentCall = () => {
+      axios
+         .post(
+            `${API_URL}/attend`,
+            { Token: result2.text },
+            { headers: { Accept: "application/json" } }
+         )
+         .then((resp) => {
+            // console.log(resp)
+            if (resp.data.status == true) {
+               alert("Attendance recorded!")
+               axios
+                  .post(
+                     `${API_URL}/info`,
+                     { Token: result2.text },
+                     { headers: { Accept: "application/json" } }
+                  )
+                  .then((resp) => {
+                     // console.log(resp)
+                     if (resp.data.status == true) {
+                        setData1(resp.data.user);
+                     } else {
+                        setDetails(true)
+                        alert("Invalid QR code!")
+                        setStopStream(false);
+                     }
+                  }).catch((err) => {
+                     console.log(err)
+                     alert("Something is wrong with backend, contact Navin ASAP!")
+                     setStopStream(false);
+                  });
 
+            } else {
+               alert("Something went wrong, call the backend guys!")
+            }
+         }).catch((err) => {
+            console.log(err)
+            alert("Something is wrong with backend, contact Navin ASAP!")
+         });
+   }
+
+   const checkoutCall = () => {
+      axios
+         .post(
+            `${API_URL}/checkout`,
+            { Token: window.$qr.text },
+            { headers: { Accept: "application/json" } }
+         )
+         .then((resp) => {
+            // console.log(resp)
+            if (resp.data.status == true) {
+               alert("Leaving recorded!")
+               axios
+                  .post(
+                     `${API_URL}/info`,
+                     { Token: window.$qr.text },
+                     { headers: { Accept: "application/json" } }
+                  )
+                  .then((resp) => {
+                     // console.log(resp)
+                     if (resp.data.status == true) {
+                        setData1(resp.data.user);
+                     } else {
+                        setDetails(true)
+                        alert("Invalid QR code!")
+                        setStopStream(false);
+                     }
+                  }).catch((err) => {
+                     console.log(err)
+                     alert("Something is wrong with backend, contact Navin ASAP!")
+                     setStopStream(false);
+                  });
+
+            } else {
+               alert("Something went wrong, call the backend guys!")
+            }
+         }).catch((err) => {
+            console.log(err)
+            alert("Something is wrong with backend, contact Navin ASAP!")
+         });
+   }
 
    return (
       <>
@@ -53,6 +134,7 @@ export default function Home() {
                               // console.log(resp)
                               if (resp.data.status == true) {
                                  setData1(resp.data.user);
+                                 window.$qr = result
                               } else {
                                  setDetails(true)
                                  alert("Invalid QR code!")
@@ -69,7 +151,7 @@ export default function Home() {
                   stopStream={stopStream}
                />
             ) : data1 ? (
-               <div>
+               < div >
                   <center>
 
                      <h2>Name : {data1.name}</h2>
@@ -86,13 +168,13 @@ export default function Home() {
                         <div class="container">
                            <div class="row">
                               <div class="col p-3">
-                                 <button disabled={data1.present} className="btn btn-primary ">
-                                    {!data1.present?("Present"):(<p>{data1.entry_time.slice(11, -10)} [{data1.entry_time.slice(0, 10)}]</p>)}
+                                 <button disabled={data1.present} className="btn btn-primary " onClick={presentCall}>
+                                    {!data1.present ? ("Present") : (<p>{data1.entry_time.slice(11, -10)} [{data1.entry_time.slice(0, 10)}]</p>)}
                                  </button>
                               </div>
                               <div class="col p-3">
-                                 <button disabled={data1.checkout} className="btn btn-primary ">
-                                    {!data1.checkout?("Checkout"):(<p>Exit time : <br/> {data1.exit_time.slice(11, -10)} {data1.exit_time.slice(0, 10)}</p>)}
+                                 <button disabled={data1.checkout} className="btn btn-primary" onClick={checkoutCall} >
+                                    {!data1.checkout ? ("Checkout") : (<p>{data1.exit_time.slice(11, -10)} [{data1.exit_time.slice(0, 10)}]</p>)}
                                  </button>
                               </div>
                               <div class="col p-3">
