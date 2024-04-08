@@ -15,16 +15,16 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Ingenius 2023</title>
-        <link rel="shortcut icon" href="/favicon.png" />
+        <title>Ingenius 2024</title>
+        <link rel="shortcut icon" href="/Ingenius2024logo.png" />
       </Head>
       <div className="  px-4  items-center  min-h-screen py-2">
         <Banner />
         <div className="flex flex-col gap-8">
           <Info1 />
           <Info2 />
-          <Info3 />
-          <Sponsor />
+        {/*  <Info3 /> */}
+        {/*  <Sponsor /> */}
         </div>
 
         <script
@@ -40,6 +40,7 @@ export default function Home() {
       `,
           }}
         ></script>
+        
       </div>
 
       {/* <div 
