@@ -23,8 +23,8 @@ export default function Home() {
         <div className="flex flex-col gap-8">
           <Info1 />
           <Info2 />
-          <Info3 />
-          <Sponsor />
+        {/*  <Info3 /> */}
+        {/*  <Sponsor /> */}
         </div>
 
         <script

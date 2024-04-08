@@ -17,7 +17,7 @@ export const Banner = () => {
             />
             {/* a button */}
             <div className="flex flex-col items-center justify-center">
-              <button class="relative text-lg inline-flex items-center justify-center px-7 py-4 mb-2 mr-2 bg-white overflow-hidden font-medium text-gray-900 border-solid border-4 border-[#fab518] rounded-xl hover:bg-[#fab518] hover:text-white hover:text-bold hover:scale-110 transition duration-300 ease-in-out transform hover:-translate-y-1">
+              <button class="relative text-lg inline-flex items-center justify-center px-7 py-4 mb-2 mr-2 overflow-hidden font-medium text-zinc-900 border-solid border-4 border-[#fab518] rounded-xl bg-[#fac518] hover:bg-gradient-to-r hover:from-amber-500 hover:to-yellow-400 hover:text-white hover:text-bold hover:scale-110 hover:shadow-[0_0_45px_-10px_(0,0,0,0.3)] hover:shadow-cyan-500 transition duration-300 ease-in-out transform hover:-translate-y-1">
                 <Link href="https://fadze26msn0.typeform.com/to/eFY5Atro">
                   Register Now
                 </Link>
