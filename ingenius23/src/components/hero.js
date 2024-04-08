@@ -26,7 +26,7 @@ export const Banner = () => {
           </div>
         </Parallax>
        <Parallax speed={15}>
-          <div  className=" absolute lg:-top-[520px] -top-[400px] z-10  text-center  w-full  text-[#fab518] flex justify-center ">
+          <div  className=" absolute lg:-top-[520px] -top-[400px] z-10  text-center  w-[94%] lg:w-full  text-[#fab518] flex justify-center ">
              
             <h1 className="heading text-6xl font-lovelo-line-bold lg:font-lovelo-line-light lg:text-9xl font-bold flex flex-wrap justify-center">
               <div className="lg:hidden">&nbsp;</div>
