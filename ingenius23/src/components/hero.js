@@ -9,7 +9,7 @@ export const Banner = () => {
         <Parallax speed={-15}>
           <div className="   -z-10   w-full slow">
             <Image
-              src="https://media.discordapp.net/attachments/972456002844766228/1091712713010462801/Main_Logo.png?width=1036&height=1036"
+              src="/Crop_logo_2024.svg"
               alt="Picture of the author"
               width={500}
               height={500}
@@ -25,9 +25,26 @@ export const Banner = () => {
             </div>
           </div>
         </Parallax>
-        <Parallax speed={15}>
-          <div className=" absolute lg:-top-[520px] -top-[400px] z-10  text-center  w-full  text-[#fab518] heading text-6xl font-lovelo-line-bold lg:font-lovelo-line-light lg:text-9xl font-bold ">
-            <h1 className="">INGENIUS 2023</h1>
+       <Parallax speed={15}>
+          <div  className=" absolute lg:-top-[520px] -top-[400px] z-10  text-center  w-full  text-[#fab518] flex justify-center ">
+             
+            <h1 className="heading text-6xl font-lovelo-line-bold lg:font-lovelo-line-light lg:text-9xl font-bold flex flex-wrap justify-center">
+              <div className="lg:hidden">&nbsp;</div>
+              <div className="text-orange-600">I</div>
+              <div className="text-violet-600">N</div>
+              <div className="text-blue-600">G</div>
+              <div className="text-rose-600">E</div>
+              <div>N</div>
+              <div className="text-cyan-600">I</div>
+              <div className="text-red-600">U</div>
+              <div className="text-purple-600">S</div>
+              <div className="">&nbsp;</div>
+              <div className="text-fuchsia-600">2</div>
+              <div className="text-teal-600">0</div>
+              <div className="text-indigo-600">2</div>
+              <div className="text-pink-600">4</div>
+            </h1>
+            
           </div>
         </Parallax>
       </div>
