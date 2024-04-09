@@ -164,7 +164,7 @@ export default function Home() {
                         ></Image>
                      </a> </div> : null}
                </div>
-            ) : <p className="text-center">Please enter your details!<br /> <b> Please add +91 to the phone number!!!</b></p>}
+            ) : <p className="text-center">Please enter your details!<br /> <b> Please do NOT add +91 to the phone number!!!</b></p>}
             <p className="text-center"> Please enter same details as entered during registration, if you feel that the check in system is not working as intended please reach out to any of our members from organising comiteee </p>
          </main>
       </>
