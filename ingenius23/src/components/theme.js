@@ -15,11 +15,11 @@ export default function Theme(themeTitle, themeDescription) {
         data-aos-delay="200"
         className=" flex items-center lg:px-40 w-full lg:justify-center lg:gap-10 "
       >
-        <div className="font-mono my-8">
+        <div className="font-mono my-8 lg:my-0">
           <h1 className="lg:text-4xl text-2xl  py-4 text-[#fac518] font-bold">
             {themeTitle}
           </h1>
-          <p className="text-lg lg:text-xl text-white">{themeDescription}</p>
+          <p className="text-lg lg:text-2xl text-white">{themeDescription}</p>
         </div>
       </div>
     </div>
