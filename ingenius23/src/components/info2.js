@@ -45,7 +45,7 @@ const themes = [
   {
     themeTitle: "Open Innovation",
     themeDescription:
-      "Have an idea already that doesn't fit into the above themes? This is just for you. Don't have an idea but want to do something apart from the themes above? Have a go at our idea generator!",
+      "Have an idea already that doesn't fit into the above themes? Go for it! All that matters is the excellence of your enginnering and the originality of your approach! Don't have an idea but want to do something apart from the themes above? Have a go at our idea generator!",
   },
 ];
 

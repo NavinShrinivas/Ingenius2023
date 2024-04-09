@@ -11,7 +11,8 @@ export const IdeaGenerator = () => {
     <div
       data-aos="fade-right"
       data-aos-delay="200"
-      className="items-center my-20 gap-10  lg:px-40 justify-center flex"
+      className="flex items-center gap-10  lg:px-40 justify-center"
+      id="idea-generator"
     >
       <div className="flex flex-col items-center justify-center">
         <div className="font-mono">

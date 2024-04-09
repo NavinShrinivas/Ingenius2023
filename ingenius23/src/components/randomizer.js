@@ -130,19 +130,22 @@ export default function Randomizer() {
 
   return (
     <div className="flex flex-col justify-center items-center font-mono text-white">
-      <div className="text-lg">You can do something related to</div>
+    {/*  <div className="text-lg">You can do something related to</div> */}
       <div className="flex flex-col lg:flex-row justify-center items-center text-2xl">
-        <div className="text-white border-b border-b-[#fac518] m-5" ref={r1Ref}>
+        <div className="text-white border-b border-b-[#fac518] m-5 lg:text-4xl" ref={r1Ref}>
           Your Next Big
         </div>
-        <div className="text-white border-b border-b-[#fac518] m-5" ref={r2Ref}>
+        <div className="text-white text-4xl">
+          +
+        </div>
+        <div className="text-white border-b border-b-[#fac518] lg:text-4xl m-5" ref={r2Ref}>
           IDEA!
         </div>
       </div>
 
       <div className="flex flex-col items-center justify-center m-5">
         <button
-          className="relative text-lg inline-flex items-center justify-center px-4 py-2 mb-2 mr-2 overflow-hidden font-medium text-zinc-900 border-solid border-4 border-[#fab518] rounded-xl bg-[#fac518] hover:bg-gradient-to-r hover:from-amber-500 hover:to-yellow-400 hover:text-white hover:text-bold hover:scale-110 hover:shadow-[0_0_45px_-10px_(0,0,0,0.3)] hover:shadow-cyan-500 transition duration-300 ease-in-out transform hover:-translate-y-1"
+          className="relative text-lg inline-flex items-center justify-center px-4 py-2 mb-2 mr-2 overflow-hidden font-semibold text-cyan-700 border-solid border-4 border-[#fab518] rounded-xl bg-[#fac518] hover:bg-gradient-to-r hover:from-amber-500 hover:to-yellow-400 hover:text-white hover:text-bold hover:scale-110 hover:shadow-[0_0_45px_-10px_(0,0,0,0.3)] hover:shadow-cyan-500 transition duration-300 ease-in-out transform hover:-translate-y-1"
           onClick={randomize}
         >
           Generate Idea!
