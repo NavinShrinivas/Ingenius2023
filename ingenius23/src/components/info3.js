@@ -4,6 +4,7 @@ import { Parallax } from "react-scroll-parallax";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+
 export const Info3 = () => {
   useEffect(() => {
     AOS.init();

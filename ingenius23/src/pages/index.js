@@ -6,6 +6,8 @@ import { Info2 } from "@/components/info2";
 import { Sponsor } from "@/components/sponsors";
 import { Info3 } from "@/components/info3";
 import Head from "next/head";
+import { IdeaGenerator } from "@/components/ideaGenerator";
+
 export default function Home() {
   const [userid, setUserid] = useState("");
   const handleChane = (e) => {
@@ -17,14 +19,16 @@ export default function Home() {
       <Head>
         <title>Ingenius 2024</title>
         <link rel="shortcut icon" href="/Ingenius2024logo.png" />
+        <meta name="darkreader-lock" />
       </Head>
       <div className="  px-4  items-center  min-h-screen py-2">
         <Banner />
         <div className="flex flex-col gap-8">
           <Info1 />
           <Info2 />
-        {/*  <Info3 /> */}
-        {/*  <Sponsor /> */}
+          <IdeaGenerator />
+          {/*  <Info3 /> */}
+          {/*  <Sponsor /> */}
         </div>
 
         <script
@@ -40,7 +44,6 @@ export default function Home() {
       `,
           }}
         ></script>
-        
       </div>
 
       {/* <div 
