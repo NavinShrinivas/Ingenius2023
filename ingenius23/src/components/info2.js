@@ -28,9 +28,9 @@ const themes = [
       "Imagine a future where it’s a common feat for the average person to not only journey into space but also to experience the wonders of the cosmos from their own backyard/balcony .This theme encourages you to think creatively about how to make space exploration more accessible to amateurs.",
   },
   {
-    themeTitle: "Custom ISA Architecture/ RISC-V extension",
+    themeTitle: "Custom hardware accelerator to enhance system throughput",
     themeDescription:
-      "Create your own instruction set architecture to solve a specific problem, or perhaps write a RISC-V extension? Break free from the shackles of legacy architectures and bring forth the future of computing.",
+      "In the rapidly evolving landscape of graphics, signal processing, and data-centric applications, there's a pressing need for efficient architecture support from hardware to enhance cycle time reduction and system throughput. To address this demand, a custom accelerator must be designed and built (in a HDL or a simulation in any programming language). This accelerator will serve as a vital tool for optimizing hardware architectures, enabling faster development cycles, and facilitating performance enhancements.",
   },
   {
     themeTitle: "Enhancing an existing programming language",
