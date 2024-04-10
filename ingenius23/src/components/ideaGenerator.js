@@ -17,7 +17,7 @@ export const IdeaGenerator = () => {
       <div className="flex flex-col items-center justify-center">
         <div className="font-mono">
           <h1 className="text-4xl py-4 text-[#fac518] font-bold">
-            Idea Generator
+            Ingenius Idea Generator
           </h1>
         </div>
         <div>
