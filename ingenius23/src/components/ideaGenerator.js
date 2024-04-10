@@ -16,8 +16,11 @@ export const IdeaGenerator = () => {
     >
       <div className="flex flex-col items-center justify-center">
         <div className="font-mono">
-          <h1 className="lg:text-4xl text-2xl py-4 text-[#fac518] font-bold">
-            Ingenius Idea Generator
+          <h1 className="text-4xl py-4 text-[#fac518] font-bold">
+            Ingenius
+          </h1>
+ <h1 className="text-4xl py-4 text-[#fac518] font-bold">
+            Idea Generator
           </h1>
         </div>
         <div>
