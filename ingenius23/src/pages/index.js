@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Ingenius 2024</title>
+        <title>InGenius 2024</title>
         <link rel="shortcut icon" href="/Ingenius2024logo.png" />
         <meta name="darkreader-lock" />
       </Head>
