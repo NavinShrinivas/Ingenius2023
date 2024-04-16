@@ -227,6 +227,7 @@ export default function Home() {
                   stopStream={stopStream}
                />
                 <button onClick={dismissQrReader} className="btn btn-primary ">Toggle Scanner</button>
+                <h1 style={{color: "black", fontWeight: "bold", margin: "auto", textAlign: "center"}}>PARTICIPANT VALIDATION</h1>
                 <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap:"1.5rem",  width: "100%"}}>
                <div style={{display: "flex", flexDirection: "column", gap:"0.5rem"}}>
                    <label for="campus" style = {{color: "black", fontWeight: "bold"}}>Select EC/RR Campus</label>
@@ -254,7 +255,7 @@ export default function Home() {
                </select>
                </div>
                <div style={{display: "flex", flexDirection: "column", gap:"0.75rem"}}>
-               <label for="last3" style = {{color: "black", fontWeight: "bold"}}>Enter last 3 digits of SRN</label>
+               <label for="last3" style = {{color: "black", fontWeight: "bold", margin: "auto", textAlign: 'center'}}>Enter last 3 digits of SRN</label>
                <input type="text" placeholder="last 3 digits.." value={last3srn}
                pattern="[0-9]{0,3}"  
                onChange={(e) => handleLast3Change(e.target.value)} 
@@ -264,11 +265,11 @@ export default function Home() {
                
                </div>
                <button 
-             /*  onClick = {() => {
+              onClick = {() => {
                   const regex = /^PES[12]UG(20|21|22|23)(CS|AM|EC)[0-9]{3}$/
                   if(fullSRN.length == 13 && regex.test(fullSRN) ){
                       setStopStream(true);
-                        axios
+                       /*  axios
                            .post(
                               `${API_URL}/info`,
                               { SRN: fullSRN },
@@ -276,10 +277,10 @@ export default function Home() {
                            )
                            .then((resp) => {
                               // console.log(resp)
-                              if (resp.data.status == true) {
-                                 setData1(resp.data.user);
+                              if (resp.data.status == true) { */
+                                 setData1("Yes")
                                  
-                              } else {
+                          /*    } else {
                                  setDetails(true)
                                  alert("Invalid participant!")
                                  setStopStream(false);
@@ -288,13 +289,13 @@ export default function Home() {
                               console.log(err)
                               alert("Something is wrong with backend, contact Navin ASAP!")
                               setStopStream(false);
-                           });
-                        setDetails(false);
+                           }); */
+                        setDetails(false); 
                   }
                   else{
                      console.log("Invalid SRN")
                   }
-               }} */
+               }} 
                className="btn btn-primary">
                   Validate Participant
                   </button>
@@ -333,21 +334,21 @@ export default function Home() {
                               </div>
                            </div>
                            <div class="row">
-                              <div class="col p-3">
+                          {/*    <div class="col p-3">
                                  <button id="Midnight1" disabled={data1.meals.midnight1} className="btn btn-primary " onClick={handleFood}>
                                     Minight Smaks
                                  </button>
-                              </div>
+                              </div> */}
                               <div class="col p-3">
                                  <button id="Breakfast1" disabled={data1.meals.breakfast1} className="btn btn-primary " type="button" onClick={handleFood}>
                                     Breakfast
                                  </button>
-                              </div>
-                              <div class="col p-3">
+                              </div> 
+                              {/* <div class="col p-3">
                                  <button id="Lunch1" disabled={data1.meals.lunch1} className="btn btn-primary " type="button" onClick={handleFood}>
                                     Lunch
                                  </button>
-                              </div>
+                              </div> */}
                            </div>
                         </div>
                      </div>
