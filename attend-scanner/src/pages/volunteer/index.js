@@ -1,5 +1,5 @@
 import Head from "next/head";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BarcodeScannerComponent from "@steima/react-qr-barcode-scanner";
 import Image from "next/image";
 import { Inter } from "next/font/google";
@@ -14,6 +14,13 @@ var qr;
 export default function Home() {
    const [data, setData] = React.useState("Not Found");
    const [qrscan, setqrscan] = useState();
+   /* For manual srn entry */
+   const [campus, setCampus] = useState("PES2UG")
+   const [year, setYear] = useState("23")
+   const [branch, setBranch] = useState("CS")
+   const [last3srn,setLast3Srn] = useState("")
+   const [fullSRN, setFullSRN] = useState("")
+
    const [stopStream, setStopStream] = React.useState(false);
    const [details, setDetails] = React.useState(true);
    const [data1, setData1] = React.useState();
@@ -147,6 +154,34 @@ export default function Home() {
          });
    }
 
+   function handleCampusChange(data){
+      setCampus(data)
+   }
+    function handleYearChange(data){
+      setYear(data)
+   }
+    function handleBranchChange(data){
+      setBranch(data)
+   }
+    function handleLast3Change(data){
+      const regex = /^$|^[0-9]{1,3}$/;
+      if(regex.test(data)){
+      setLast3Srn(data)
+      }
+      else{
+         alert("Please enter only 3 digits!")
+      }
+   }
+
+   useEffect(() => {
+      const srn = campus + year + branch + last3srn
+      setFullSRN(srn)
+   }, [campus, year, branch, last3srn]);
+
+  /* useEffect(() => {
+      console.log(fullSRN)
+   },[fullSRN]) */
+
    return (
       <>
          <Head>
@@ -157,6 +192,7 @@ export default function Home() {
          </Head>
          <main className={styles.main2}>
             {details ? (
+               <>
                <BarcodeScannerComponent
                   width="100%"
                   height="100%"
@@ -190,6 +226,79 @@ export default function Home() {
                   }}
                   stopStream={stopStream}
                />
+                <button onClick={dismissQrReader} className="btn btn-primary ">Toggle Scanner</button>
+                <div style={{display: "flex", flexDirection: "column", alignItems: "center", gap:"1.5rem",  width: "100%"}}>
+               <div style={{display: "flex", flexDirection: "column", gap:"0.5rem"}}>
+                   <label for="campus" style = {{color: "black", fontWeight: "bold"}}>Select EC/RR Campus</label>
+               <select name="campus" onChange = {(e) => handleCampusChange(e.target.value)}>
+               <option value="PES1UG">RR Campus</option>
+               <option value="PES2UG" selected>EC Campus</option>
+               </select>
+               </div>
+               
+                   <div style={{display: "flex", flexDirection: "column", gap:"0.5rem", width: "55%"}}>
+                   <label for="year" style = {{color: "black", fontWeight: "bold"}}>Select Year of Joining</label>
+               <select name="year" onChange = {(e) => handleYearChange(e.target.value)}>
+               <option value="20">2020</option>
+               <option value="21">2021</option>
+                <option value="22">2022</option>
+               <option value="23" selected>2023</option>
+               </select>
+               </div>
+                  <div style={{display: "flex", flexDirection: "column", gap:"0.5rem"}}>
+                   <label for="branch" style = {{color: "black", fontWeight: "bold"}}>Select Branch</label>
+               <select name="branch" onChange = {(e) => handleBranchChange(e.target.value)}>
+               <option value="CS" selected>CS</option>
+               <option value="EC">EC</option>
+               <option value="AM">AM</option>
+               </select>
+               </div>
+               <div style={{display: "flex", flexDirection: "column", gap:"0.75rem"}}>
+               <label for="last3" style = {{color: "black", fontWeight: "bold"}}>Enter last 3 digits of SRN</label>
+               <input type="text" placeholder="last 3 digits.." value={last3srn}
+               pattern="[0-9]{0,3}"  
+               onChange={(e) => handleLast3Change(e.target.value)} 
+               style={{width: "80%", margin: "auto", padding:"0.5rem"}}/> 
+                  
+               </div>
+               
+               </div>
+               <button 
+             /*  onClick = {() => {
+                  const regex = /^PES[12]UG(20|21|22|23)(CS|AM|EC)[0-9]{3}$/
+                  if(fullSRN.length == 13 && regex.test(fullSRN) ){
+                      setStopStream(true);
+                        axios
+                           .post(
+                              `${API_URL}/info`,
+                              { SRN: fullSRN },
+                              { headers: { Accept: "application/json" } }
+                           )
+                           .then((resp) => {
+                              // console.log(resp)
+                              if (resp.data.status == true) {
+                                 setData1(resp.data.user);
+                                 
+                              } else {
+                                 setDetails(true)
+                                 alert("Invalid participant!")
+                                 setStopStream(false);
+                              }
+                           }).catch((err) => {
+                              console.log(err)
+                              alert("Something is wrong with backend, contact Navin ASAP!")
+                              setStopStream(false);
+                           });
+                        setDetails(false);
+                  }
+                  else{
+                     console.log("Invalid SRN")
+                  }
+               }} */
+               className="btn btn-primary">
+                  Validate Participant
+                  </button>
+               </>
             ) : data1 ? (
                < div >
                   <center>
@@ -247,7 +356,7 @@ export default function Home() {
             ) : null}
             {/* {console.log(data1.meals)} */}
 
-            <button onClick={dismissQrReader} className="btn btn-primary ">Toggle Scanner</button>
+           
          </main>
       </>
    );
