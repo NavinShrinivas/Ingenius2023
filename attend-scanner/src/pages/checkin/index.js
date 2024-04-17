@@ -4,19 +4,19 @@ import BarcodeScannerComponent from "@steima/react-qr-barcode-scanner";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import axios from "axios";
-import 'bootstrap/dist/css/bootstrap.css';
+import "bootstrap/dist/css/bootstrap.css";
 import styles from "@/styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const API_URL = "https://hackframe.navinshrinivas.com";
+const API_URL = "http://localhost:5001";
 
 export default function Home() {
    const [data, setData] = React.useState("Not Found");
    const [details, setDetails] = React.useState(true);
    const [data1, setData1] = React.useState();
-   const [attempt, setAttempt] = React.useState(false)
-   const [qrscan, setqrscan] = React.useState()
-   const [qr, setqr] = React.useState(false)
+   const [attempt, setAttempt] = React.useState(false);
+   const [qrscan, setqrscan] = React.useState();
+   const [qr, setqr] = React.useState(false);
    //...
    const [query, setQuery] = useState({
       SRN: "",
@@ -52,8 +52,8 @@ export default function Home() {
             headers: { Accept: "application/json" },
          })
          .then(function(response) {
-            setAttempt(false)
-            setAttempt(true)
+            setAttempt(false);
+            setAttempt(true);
             setQuery({
                SRN: "",
                name: "",
@@ -61,19 +61,19 @@ export default function Home() {
                email: "",
             });
             if (response.data.status == true) {
-               setData("Found user. " + response.data.message)
+               setData("Found user. " + response.data.message);
                setqrscan(response.data.QR);
-               setqr(true)
+               setqr(true);
             } else {
-               setData("User records not found :( " + response.data.message)
+               setData("User records not found :( " + response.data.message);
                setqrscan("");
             }
          })
          .catch(function(error) {
-            setAttempt(false)
-            setAttempt(true)
-            setData("User records not found :( ")
-            setqr(false)
+            setAttempt(false);
+            setAttempt(true);
+            setData("User records not found :( ");
+            setqr(false);
             console.log(error);
          });
    };
@@ -95,7 +95,6 @@ export default function Home() {
                   id="ajaxForm"
                   onSubmit={handleSubmit}
                >
-
                   <div className="form-group">
                      <label>SRN : </label>
                      <input
@@ -106,7 +105,6 @@ export default function Home() {
                         onChange={handleChange()}
                         required
                      ></input>
-
                   </div>
                   <br />
                   <div className="form-group">
@@ -119,8 +117,8 @@ export default function Home() {
                         onChange={handleChange()}
                         required
                      ></input>
-
-                  </div>                  <br />
+                  </div>{" "}
+                  <br />
                   <div className="form-group">
                      <label>Email : </label>
                      <input
@@ -131,8 +129,8 @@ export default function Home() {
                         onChange={handleChange()}
                         required
                      ></input>
-
-                  </div>                     <br />
+                  </div>{" "}
+                  <br />
                   <div className="form-group">
                      <label>Phone : </label>
                      <input
@@ -144,28 +142,44 @@ export default function Home() {
                         required
                      ></input>
                   </div>
-                  <button type="submit" className="btn btn-primary mt-4 position-absolute start-50 translate-middle">
+                  <button
+                     type="submit"
+                     className="btn btn-primary mt-4 position-absolute start-50 translate-middle"
+                  >
                      Submit
                   </button>
                </form>
             </div>
             {attempt ? (
-               <div class="d-flex align-items-center justify-content-center flex-column" >
+               <div class="d-flex align-items-center justify-content-center flex-column">
                   <p>{data}</p>
-                  {qr ? <div class="d-flex align-items-center justify-content-center flex-column">
-                     <p>Click on the qr code to download it as an image</p> <br />
-                     <a href={"data:image/png;base64," + qrscan} download="myimage">
-                        <Image
-                           id="imgElem"
-                           src={"data:image/png;base64," + qrscan}
-                           alt="Picture of the author"
-                           width={200}
-                           height={200}
-                        ></Image>
-                     </a> </div> : null}
+                  {qr ? (
+                     <div class="d-flex align-items-center justify-content-center flex-column">
+                        <p>Click on the qr code to download it as an image</p> <br />
+                        <a href={"data:image/png;base64," + qrscan} download="myimage">
+                           <Image
+                              id="imgElem"
+                              src={"data:image/png;base64," + qrscan}
+                              alt="Picture of the author"
+                              width={200}
+                              height={200}
+                           ></Image>
+                        </a>{" "}
+                     </div>
+                  ) : null}
                </div>
-            ) : <p className="text-center">Please enter your details!<br /> <b> Please do NOT add +91 to the phone number!!!</b></p>}
-            <p className="text-center"> Please enter same details as entered during registration, if you feel that the check in system is not working as intended please reach out to any of our members from organising comiteee </p>
+            ) : (
+               <p className="text-center">
+                  Please enter your details!
+                  <br /> <b> Please do NOT add +91 to the phone number!!!</b>
+               </p>
+            )}
+            <p className="text-center">
+               {" "}
+               Please enter same details as entered during registration, if you feel
+               that the check in system is not working as intended please reach out
+               to any of our members from organising comiteee{" "}
+            </p>
          </main>
       </>
    );
