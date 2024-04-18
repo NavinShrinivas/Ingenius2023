@@ -24,6 +24,10 @@ type GetTokenFromSRNRequest struct {
 	SRN string `json:"SRN"`
 }
 
+type GetSRNFromPRNRequest struct {
+	PRN string `json:"PRN"`
+}
+
 type StandardRequest struct {
 	Token string `json:"token"`
 }
