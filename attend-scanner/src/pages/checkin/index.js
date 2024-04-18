@@ -42,7 +42,7 @@ export default function Home() {
       const jsonObject = {};
 
       for (const [key, value] of formData) {
-         jsonObject[key] = value;
+         jsonObject[key] = value.trim();
       }
 
       // console.log(query);
