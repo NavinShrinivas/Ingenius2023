@@ -8,7 +8,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import styles from "@/styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const API_URL = "http://localhost:5001";
+const API_URL = "https://hackframe.navinshrinivas.com";
 
 export default function Home() {
    const [data, setData] = React.useState("Not Found");
