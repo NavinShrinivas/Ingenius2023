@@ -8,6 +8,9 @@ import (
 	"net/http"
 	"time"
 
+	"io/ioutil"
+	"encoding/json"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	log "github.com/urishabh12/colored_log"
@@ -81,6 +84,43 @@ func main() {
 				"message": "Invalid User record!",
 			})
 		}
+	})
+
+
+	r.POST("getSRNFromPRN", func(c *gin.Context){
+		var b communication.GetSRNFromPRNRequest;
+		err := c.BindJSON(&b);
+		if err != nil {
+			log.Println(err)
+			c.JSON(http.StatusBadRequest, gin.H{
+				"status":  false,
+				"message": "invalid request",
+			})
+			return;
+		}
+		data, err := ioutil.ReadFile("prnSrnMapping.json")
+    if err != nil {
+      panic("PRN TO SRN MAPPING SCREWED UP: File problem")
+    }
+		var PRNToSRNMapping map[string]string;
+		err = json.Unmarshal(data, &PRNToSRNMapping)
+    if err != nil {
+        panic("PRN TO SRN MAPPING SCREWED UP");
+    }
+		srn := PRNToSRNMapping[b.PRN];
+		if srn == "" {
+			c.JSON(http.StatusForbidden, gin.H{
+				"status":  false,
+				"message": "Invalid PRN!",
+			})
+			return;
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"status":  true,
+			"message": "SRN found!",
+			"SRN": srn,
+		})
 	})
 
 
