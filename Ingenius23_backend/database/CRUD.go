@@ -109,6 +109,25 @@ func CreateUserRecord(b communication.UserInitRequest) (string, int, bool) {
 	return "User created", http.StatusOK, true
 }
 
+func CheckUserRecords_INSECURE(request communication.GetTokenFromSRNRequest) (bool, *User){
+	db, err := GetDatabaseConnection()
+	if err != nil {
+		return false, nil
+	}
+	query_user := User{
+		SRN: request.SRN,
+	}
+	var existing_user User
+	db.First(&existing_user, &query_user)
+	log.Println(request, existing_user)
+	return true, &existing_user
+	// this is a severe security flaw, as it allows anyone to get the token of any user by just knowing the SRN
+	// keep this route a secret
+	// I don't want to do this but we have to, to have a backup if the qr code doesn't read.
+	// the volunteer should verify the details of the participant (check ID card)
+}
+
+
 func CheckUserRecords(request communication.CheckInRequest) (bool, *User) {
 	db, err := GetDatabaseConnection()
 	if err != nil {

@@ -77,7 +77,6 @@ func GenerateAuthToken(user_record database.User) (string, int, bool, string, *c
 func GetClaimsInfo(rawtoken string) map[string]interface{} {
 	parser_struct := jwt.Parser{
 		UseJSONNumber:        true,  //Force number to be raw numbers and not strings
-		SkipClaimsValidation: false, //Forces password validation
 	}
 	claims := jwt.MapClaims{}
 	token, _ := parser_struct.ParseWithClaims(rawtoken, claims, func(token *jwt.Token) (interface{}, error) {
@@ -95,11 +94,12 @@ func GetClaimsInfo(rawtoken string) map[string]interface{} {
 	return nil
 }
 
+
 func GenerateQR(fulluserrecord database.User) ([]byte, string, int, bool, error) {
 	message, httpstatus, status, token, _ := GenerateAuthToken(fulluserrecord)
 	if status == true {
 		var png []byte
-		png, err := qrcode.Encode(token, qrcode.Medium, 256)
+		png, err := qrcode.Encode(token, qrcode.Low, 4096)
 		if err != nil {
 			return nil, "Error generating QRm try again later.", http.StatusInternalServerError, false, err
 		} else {

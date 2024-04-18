@@ -20,6 +20,10 @@ type CheckInRequest struct {
 	Email string `json:"email"`
 }
 
+type GetTokenFromSRNRequest struct {
+	SRN string `json:"SRN"`
+}
+
 type StandardRequest struct {
 	Token string `json:"token"`
 }

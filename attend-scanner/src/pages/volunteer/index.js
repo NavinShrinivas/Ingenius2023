@@ -8,7 +8,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.css";
 
 const inter = Inter({ subsets: ["latin"] });
-const API_URL = "http://localhost:5001";
+const API_URL = "https://hackframe.navinshrinivas.com";
 var qr;
 
 export default function Home() {
@@ -190,8 +190,8 @@ export default function Home() {
    }, [campus, year, branch, last3srn]);
 
    /* useEffect(() => {
-                                             console.log(fullSRN)
-                                          },[fullSRN]) */
+                                                    console.log(fullSRN)
+                                                 },[fullSRN]) */
 
    return (
       <>
