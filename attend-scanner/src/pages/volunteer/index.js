@@ -191,8 +191,8 @@ export default function Home() {
    }, [campus, year, branch, last3srn]);
 
    /* useEffect(() => {
-                                                                        console.log(fullSRN)
-                                                                     },[fullSRN]) */
+                                                                          console.log(fullSRN)
+                                                                       },[fullSRN]) */
 
    return (
       <>
@@ -205,7 +205,13 @@ export default function Home() {
          <main className={styles.main2}>
             {details ? (
                <>
-                  <div>
+                  <div
+                     style={{
+                        fontWeight: "bold",
+                        margin: "auto",
+                        textAlign: "center",
+                     }}
+                  >
                      <label
                         for="last3"
                         style={{
@@ -215,9 +221,10 @@ export default function Home() {
                            textAlign: "center",
                         }}
                      >
-                        Enter last 3 digits of SRN
+                        Barcode Scanner
                      </label>
                      <input
+                        autoFocus
                         type="text"
                         placeholder="PRN"
                         value={prn}
