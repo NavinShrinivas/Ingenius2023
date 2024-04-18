@@ -25,6 +25,7 @@ export default function Home() {
    const [details, setDetails] = React.useState(true);
    const [data1, setData1] = React.useState();
    const [token, setToken] = useState("");
+   const [prn, setPRN] = useState("");
    //...
    const dismissQrReader = () => {
       // Stop the QR Reader stream (fixes issue where the browser freezes when closing the modal) and then dismiss the modal one tick later
@@ -190,8 +191,8 @@ export default function Home() {
    }, [campus, year, branch, last3srn]);
 
    /* useEffect(() => {
-                                                    console.log(fullSRN)
-                                                 },[fullSRN]) */
+                                                                        console.log(fullSRN)
+                                                                     },[fullSRN]) */
 
    return (
       <>
@@ -204,6 +205,93 @@ export default function Home() {
          <main className={styles.main2}>
             {details ? (
                <>
+                  <div>
+                     <label
+                        for="last3"
+                        style={{
+                           color: "black",
+                           fontWeight: "bold",
+                           margin: "auto",
+                           textAlign: "center",
+                        }}
+                     >
+                        Enter last 3 digits of SRN
+                     </label>
+                     <input
+                        type="text"
+                        placeholder="PRN"
+                        value={prn}
+                        onChange={(e) => setPRN(e.target.value)}
+                        onKeyPress={async (e) => {
+                           if (e.key === "Enter") {
+                              console.log({
+                                 PRN: prn,
+                              });
+                              let response = await axios.post(
+                                 `${API_URL}/getSRNFromPRN`,
+
+                                 {
+                                    PRN: prn,
+                                 },
+                                 { headers: { Accept: "application/json" } },
+                              );
+                              let result = await response.data;
+                              let srn = result.SRN;
+                              if (!result.status) {
+                                 alert("Invalid PRN");
+                                 return;
+                              } else {
+                                 setStopStream(true);
+
+                                 // first we need to get token from the backend
+                                 let response = await axios.post(
+                                    `${API_URL}/getTokenFromSRN`,
+                                    { SRN: srn },
+                                    { headers: { Accept: "application/json" } },
+                                 );
+
+                                 let result = response.data;
+
+                                 if (result.status == false) {
+                                    alert("Invalid SRN");
+                                    setStopStream(false);
+                                    return;
+                                 }
+
+                                 setToken(result.token);
+                                 console.log("set token to: ", result.token);
+
+                                 axios
+                                    .post(
+                                       `${API_URL}/info`,
+                                       { Token: result.token },
+                                       { headers: { Accept: "application/json" } },
+                                    )
+                                    .then((resp) => {
+                                       // console.log(resp)
+                                       if (resp.data.status == true) {
+                                          setData1(resp.data.user);
+                                       } else {
+                                          setDetails(true);
+                                          alert("Invalid SRN");
+                                          setStopStream(false);
+                                       }
+                                    })
+                                    .catch((err) => {
+                                       console.log(err);
+                                       alert(
+                                          "Something is wrong with backend, contact Anurag/Achyuth ASAP!",
+                                       );
+                                       setStopStream(false);
+                                    });
+                                 setDetails(false);
+                              }
+                           }
+                        }}
+                        style={{ width: "80%", margin: "auto", padding: "0.5rem" }}
+                     />
+                  </div>
+
                   <BarcodeScannerComponent
                      width="100%"
                      height="100%"
