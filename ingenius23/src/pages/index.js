@@ -26,8 +26,9 @@ export default function Home() {
       <div className="  px-4  items-center  min-h-screen py-2">
         <Banner />
         <div className="flex flex-col gap-8">
-          <Info1 />
           <Countdown minutesLeft={305} />
+          <Info1 />
+          
           <Timeline/>
           <Info2 />
           <IdeaGenerator />

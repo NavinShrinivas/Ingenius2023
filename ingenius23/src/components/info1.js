@@ -13,7 +13,7 @@ export const Info1 = () => {
       <div
         data-aos="zoom-in"
         data-aos-delay="200"
-        className=" flex items-center lg:px-40 w-full lg:justify-center lg:gap-10 "
+        className=" flex items-center lg:px-40 w-full lg:justify-center "
       >
        {/* <Image
           src="/Framework.png"
