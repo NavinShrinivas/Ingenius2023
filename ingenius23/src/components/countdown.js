@@ -46,7 +46,7 @@ export const Countdown = ({minutesLeft}) => {
      <div
       data-aos="flip-up"
       data-aos-delay="200"
-      className="items-center lg:my-40 my-24  lg:px-40 justify-center flex"
+      className="items-center lg:mt-72 lg:mb-12 mt-8 mb-16 gap-10 lg:px-40 justify-center flex"
     >
       <div className={`flex flex-col items-center justify-center font mono lg:text-7xl text-3xl ${count > 6000 ? "text-[#fac518]" : "text-red-600"} font-bold`}>
        <h1 className="mb-4 ">TIME UNTIL HACK</h1>
