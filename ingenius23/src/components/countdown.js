@@ -50,7 +50,7 @@ export const Countdown = ({targetTime}) => {
       className="items-center lg:mt-72 lg:mb-12 mt-8 mb-16 gap-10 lg:px-40 justify-center flex"
     >
       <div className={`flex flex-col items-center justify-center font mono lg:text-7xl text-3xl ${count > 6000 ? "text-[#fac518]" : "text-red-600"} font-bold`}>
-       <h1 className="mb-4 ">TIME UNTIL REVIEW 1</h1>
+       <h1 className="mb-4 ">TIME UNTIL REVIEW 2</h1>
          <h1 className="mb-4">
         {hour < 10 ? "0" + hour : hour} : {minute < 10 ? "0" + minute : minute} :
         {" "}{second < 10 ? "0" + second : second}
