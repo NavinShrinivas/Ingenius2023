@@ -4,6 +4,8 @@ import { Banner } from "@/components/hero";
 import { Info1 } from "@/components/info1";
 import { Info2 } from "@/components/info2";
 import { Sponsor } from "@/components/sponsors";
+import { Timeline } from "@/components/timeline";
+import { Countdown } from "@/components/countdown";
 import { Info3 } from "@/components/info3";
 import Head from "next/head";
 import { IdeaGenerator } from "@/components/ideaGenerator";
@@ -25,6 +27,8 @@ export default function Home() {
         <Banner />
         <div className="flex flex-col gap-8">
           <Info1 />
+          <Countdown minutesLeft={305} />
+          <Timeline/>
           <Info2 />
           <IdeaGenerator />
           {/*  <Info3 /> */}
