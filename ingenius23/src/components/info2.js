@@ -57,11 +57,11 @@ export const Info2 = () => {
     <div
       data-aos="fade-right"
       data-aos-delay="200"
-      className="items-center my-20 gap-10  lg:px-40 justify-center flex"
+      className="items-center gap-10 lg:px-40 justify-center flex"
     >
       <div className="flex flex-col items-center justify-center">
         <div className="font-mono">
-          <h1 className="text-4xl py-4 text-[#fac518] font-bold">THEMES</h1>
+          <h1 className="text-4xl lg:text-7xl py-4 text-[#fac518] font-bold">THEMES</h1>
         </div>
         <div>
           {themes.map((item) => {
