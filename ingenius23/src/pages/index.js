@@ -26,7 +26,7 @@ export default function Home() {
       <div className="  px-4  items-center  min-h-screen py-2">
         <Banner />
         <div className="flex flex-col gap-8">
-          <Countdown minutesLeft={289} />
+          <Countdown targetTime={new Date(2024,3,19,16,0,0)} />
           <Info1 />
           
           <Timeline/>

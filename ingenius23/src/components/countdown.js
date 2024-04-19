@@ -2,9 +2,10 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import { useState, useEffect } from "react";
 
-export const Countdown = ({minutesLeft}) => {
-    // minutes better for us for easy update, but we need seconds to properly display countdown
-    const secondsLeft = minutesLeft * 60;
+export const Countdown = ({targetTime}) => {
+    const targetTimestamp = new Date(targetTime).getTime();
+    const now = new Date().getTime();
+    const secondsLeft = Math.floor((targetTimestamp - now) / 1000);
     const [count, setCount] = useState(secondsLeft); // Initial seconds to review
     const [hour, setHour] = useState(0);
     const [minute, setMinute] = useState(0);
